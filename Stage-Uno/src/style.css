@@ -1,58 +1,73 @@
-*, ::before, ::after {
+*,
+::before,
+::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
+
 :root {
     --sm-fontsize: 1.8rem;
     --lg-fontsize: 2rem;
     --base-color: #EAECF0;
     --font-color: #101828;
 }
-html{
+
+html {
     font-size: 62.5%;
 }
-body{
+
+body {
     font-family: 'Inter', sans-serif;
     padding: 4em 1em 0.5em;
     font-size: var(--sm-fontsize);
     color: var(--font-color);
+    background-color: #fff;
 }
-.profile{
+
+.profile {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     position: relative;
 }
-.profile--img__container{
+
+.profile--img__container {
     width: 88px;
     height: 88px;
-    
+
 }
-.profile--img__container img{
+
+.profile--img__container img {
     width: 100%;
     height: 100%;
     border-radius: 275px;
     object-fit: cover;
 
 }
-.profile--username__twitter{
+
+.profile--username__twitter {
     margin-top: 1.5em;
     font-weight: 700;
+    font-size: 1.8rem;
 }
-.profile--username__slack{
+
+.profile--username__slack {
     display: none;
 }
-.share--button{
+
+.share--button {
     position: absolute;
     right: 0;
     top: -15px;
     cursor: pointer;
 }
-.links{
+
+.links {
     margin-top: 2em;
 }
+
 .link {
     display: block;
     text-align: center;
@@ -69,22 +84,89 @@ body{
     margin-bottom: 1.5em;
     max-width: 343px;
 }
-/* .link_img{
-    display: flex;
-    justify-content: center;
-    padding: 1.5em 0;
-    margin-top: 1.5em;
-    margin-bottom: 4em;
+.link_img, footer{
+    display: none;
 }
-a.slack{
-    margin-right: 0.8em;
+
+
+
+@media screen and (min-width: 992px) {
+    .link_img {
+        display: flex;
+        justify-content: center;
+        padding: 1.5em 0;
+        margin-top: 1.5em;
+        margin-bottom: 4em;
+    }
+    footer{
+        display: block;
+    }
+    
+    a.slack {
+        margin-right: 0.8em;
+    }
+    
+    a.git {
+        margin-left: 0.8em;
+    }
+    
+    .link_img img {
+        width: 24px
+    }
+    .profile--username__twitter {
+        margin-top: 1.5em;
+        font-weight: 700;
+        font-size: 2rem;
+    }
+
+    .link {
+        max-width: 900px;
+        font-weight: 600;
+        font-size: 1.8rem;
+    }
+    footer{
+        padding: 3.5em 7em 3em;
+    }
+
+    .footer--sub {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 1.5em;
+        border-top: 1px solid #EAECF0;
+    }
+    .footer--sub__text{
+        color: #667085;
+        text-align: center;
+        font-size: 1.6rem;
+
+    }
+
+    .footer--sub img {
+        max-width: 100%;
+
+
+    }
+    .footer--sub__logo1{
+        width: 185px;
+       height: 24px;
+    }
+
+    .footer--sub__logo2{
+       width: 132px;
+       height: 32px;
+       
+    }
+
+    .red-dot {
+        font-size: 4rem;
+        color: red;
+
+    }
 }
-a.git {
-    margin-left: 0.8em;
-}
-.link_img img{
-    width: 24px
-} */
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1300px){
+    .link{
+        max-width: 1152px;
+    }
     
 }

@@ -8,10 +8,10 @@ export default function Links() {
             <a id="book__python" className="link" href="">Zuri Books</a>
             <a id="pitch" className="link" href="https://background.zuri.team">Python Books</a>
             <a id="book__design" className="link" href="https://books.zuri.team/design-rules">Background Check for Coders</a>
-            {/* <div className="link_img">
+            <div className="link_img">
                 <a href="" className="slack"><img src="/slack_icon.png" /></a>
                 <a href="" className="git"><img src="/github-icon2.png" /></a>
-            </div> */}
+            </div>
         </section>
     )
 }
