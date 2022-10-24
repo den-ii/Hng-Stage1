@@ -5,7 +5,7 @@ export default function Profile() {
         <section className="profile">
             <img className="share--button" src="/share_button.png"/>
             <div className="profile--img__container">
-                <img id="profile__img" src="/profile__img.png" />
+                <img id="profile__img" src="/profile.jpg" />
             </div>
             <p id="twitter" className="profile--username__twitter">
             juicio_w
