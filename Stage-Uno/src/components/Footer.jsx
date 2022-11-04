@@ -6,7 +6,7 @@ export default function Footer() {
             <div class="footer--sub">
                 <div class="footer--sub__1container">
                     <img class="footer--sub__logo1" src="/Zuri.png" />
-                    <span class="red-dot"><i class="fa-solid fa-circle"></i></span>
+                    <span class="red-dot"></span>
                 </div>
                 <div>
                     <p class="footer--sub__text">HNG Internship 9 Frontend Task</p>
