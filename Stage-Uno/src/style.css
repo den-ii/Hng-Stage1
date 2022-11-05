@@ -427,6 +427,12 @@ label.checkbox--label {
     margin-bottom: 1.7em;
     font-size: 1.2rem;
 }
+.when_submitted{
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-top: 0.5em;
+    color: green;
+}
 @media screen and (min-width: 720px){
     .contact--page {
         max-width: 720px;

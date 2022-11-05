@@ -37,6 +37,13 @@ export default function Contact() {
           .then((result) => {
               console.log(result.text);
               setSubmitted("Thank you, We'll get back to you")
+              setFormData( {
+                firstName: "",
+                lastName: "",
+                email: "",
+                message: "",
+                agreed: false,
+            })      
           }, (error) => {
               console.log(error.text);
           });
@@ -53,7 +60,7 @@ export default function Contact() {
             updatetmessge('Please enter a message')
         }
         else {
-            sendEmail(event)       
+            sendEmail(event) 
         }
     }
     return (
