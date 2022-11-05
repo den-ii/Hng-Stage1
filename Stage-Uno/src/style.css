@@ -418,6 +418,15 @@ label.checkbox--label {
 .checkbox--label{
     color: #475467;
 }
+#error{
+    border: 2px solid #F89687;
+}
+.t_error{
+    color:#F83F23;
+    margin-top: -1.6em;
+    margin-bottom: 1.7em;
+    font-size: 1.2rem;
+}
 @media screen and (min-width: 720px){
     .contact--page {
         max-width: 720px;

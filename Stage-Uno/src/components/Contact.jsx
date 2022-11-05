@@ -1,19 +1,23 @@
 import React from "react"
 import Footer from "./Footer"
-import {useForm} from "react-hook-form"
+import { useForm } from "react-hook-form"
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
     const [formData, setFormData] = React.useState(
-    {
-        firstName: "", 
-        lastName: "", 
-        email: "", 
-        message: "", 
-        agreed: false,
-    })
-    
+        {
+            firstName: "",
+            lastName: "",
+            email: "",
+            message: "",
+            agreed: false,
+        })
+    const [error, updateError] = React.useState(false)
+    const [styles, updateStyle] = React.useState("")
+    const [tmessage, updatetmessge] = React.useState("")
+
     function handleChange(event) {
-        const {name, value, type, checked} = event.target
+        const { name, value, type, checked } = event.target
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
@@ -22,17 +26,30 @@ export default function Contact() {
         })
 
     }
-    let style = []
+
     function handleSubmit(event) {
         event.preventDefault()
         // submitToApi(formData)
         if (formData.message === "") {
             console.log('error')
-            style.push({
-                borderColor: "red"
-            })
+            updateError(prev => true)
+            updateStyle('error')
+            updatetmessge('Please enter a message')
+
         }
-        console.log(formData)
+        else {
+            updateError(prev => false)
+            updateStyle('')
+            updatetmessge("")
+            emailjs.sendForm('service_w8dxu55', 'template_3kd2m1k', formData,
+                'Guw6C31CD_T6V4MHV')
+                .then((result) => {
+                    console.log(result.text);
+                }, (error) => {
+                    console.log(error.text);
+                });
+                window.location.reload();
+        }
     }
     return (
         <div>
@@ -42,27 +59,28 @@ export default function Contact() {
                 <form className="contact--form" onSubmit={handleSubmit}>
                     <div className="name--flex">
                         <div>
-                        <label htmlFor="first_name">First name</label>
-                        <input className="contact--form__text" value={formData.firstName} id="first_name" name="firstName" onChange={handleChange} type="text" placeholder="Enter your first name" />
+                            <label htmlFor="first_name">First name</label>
+                            <input required className="contact--form__text" value={formData.firstName} id="first_name" name="firstName" onChange={handleChange} type="text" placeholder="Enter your first name" />
                         </div>
                         <div>
-                        <label htmlFor="last_name">Last name</label>
-                        <input className="contact--form__text" value={formData.lastName} id="last_name" name="lastName" onChange={handleChange} type="text" placeholder="Enter your last name" />
+                            <label htmlFor="last_name">Last name</label>
+                            <input required className="contact--form__text" value={formData.lastName} id="last_name" name="lastName" onChange={handleChange} type="text" placeholder="Enter your last name" />
                         </div>
                     </div>
                     <label htmlFor="email">Email</label>
-                    <input className="contact--form__text" value={formData.email} id="email" name="email" type="email" onChange={handleChange}  placeholder="yourname@email.com" />
+                    <input required className="contact--form__text" value={formData.email} id="email" name="email" type="email" onChange={handleChange} placeholder="yourname@email.com" />
                     <p className="textarea--label">Message</p>
                     <textarea
-                    style={style}
-                        value={formData.message} 
+                        id={styles}
+                        value={formData.message}
                         onChange={handleChange}
                         className="contact--form__textarea"
                         name="message"
                         placeholder="Send me a message and I'll reply you as soon as possible..."
                     />
+                    {tmessage.length > 1 && <p className="t_error">{tmessage}</p>}
                     <div className="checkbox--container">
-                        <input checked={formData.agreed} style={style[0]} className="contact--form__checkbox" type="checkbox" onChange={handleChange} id="agreed" name="agreed" />
+                        <input checked={formData.agreed} className={`contact--form__checkbox ${styles}`} type="checkbox" onChange={handleChange} id="agreed" name="agreed" />
                         <label className="checkbox--label" htmlFor="agreed">You agree to providing your data to Juicio who may contact you.</label>
                     </div>
                     <button className="contact--form__submit">Send message</button>
@@ -70,5 +88,5 @@ export default function Contact() {
             </div>
             <Footer />
         </div>
-)
+    )
 }
