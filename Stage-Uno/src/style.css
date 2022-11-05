@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 :root {
@@ -11,6 +12,8 @@
     --lg-fontsize: 2rem;
     --base-color: #EAECF0;
     --font-color: #101828;
+    --label--color: #344054;
+    --submit--bgcolor: #1570EF;
 }
 
 html {
@@ -18,7 +21,6 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
     padding: 4em 1em 0em;
     font-size: var(--sm-fontsize);
     color: var(--font-color);
@@ -47,10 +49,11 @@ body {
     object-fit: cover;
 
 }
-.profile--img__container span{
+
+.profile--img__container span {
     background-color: rgba(52, 64, 84, 0.75);
     background-image: url(/camera.png);
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     background-position: center 80%;
     position: absolute;
     left: -0.3px;
@@ -58,9 +61,10 @@ body {
     height: 100%;
     width: 100%;
     display: none;
-    
+
 }
-.profile--img__container:hover span{
+
+.profile--img__container:hover span {
     display: inline;
 }
 
@@ -88,7 +92,8 @@ body {
     justify-content: center;
     align-items: center;
 }
-.share--button img{
+
+.share--button img {
     width: 16px;
     max-width: 100%;
 }
@@ -123,7 +128,8 @@ body {
     background: #F9FAFB;
     border: 1px dashed #D0D5DD;
 }
-.share--button:hover .share-title{
+
+.share--button:hover .share-title {
     display: block;
 }
 
@@ -276,10 +282,162 @@ footer {
 
 }
 
+.contact--page {
+    max-width: 343px;
+    margin: 0 auto;
+}
+
+.contact--form {
+    margin-bottom: 6em;
+}
+
+.contact--header {
+    font-weight: 600;
+    font-size: 3.6rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 1em;
+}
+
+.contact--leading {
+    font-size: 1.8rem;
+    margin-bottom: 3em;
+    color: #475467;
+}
+
+.contact--form label,
+.textarea--label {
+    display: block;
+    margin-bottom: 0.3em;
+    color: var(--label--color);
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+.contact--form__text,
+.contact--form__textarea {
+    width: 100%;
+    padding: 0.6em 0.9em;
+    background: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    margin-bottom: 1.5em;
+    font-size: 1.6rem;
+}
+.contact--form__text:focus{
+    outline: none;
+    border: 1px solid #84CAFF;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+.checkbox--container {
+    display: flex;
+}
+
+.contact--form__checkbox {
+    width: auto;
+    border-radius: 6px;
+    box-shadow: none;
+    height: 20px;
+    width: 20px;
+}
+.contact--form__checkbox:focus{
+    outline: none;
+    border: 1px solid #84CAFF;
+    box-shadow: 0px 0px 0px 4px #D1E9FF;
+    border-radius: 6px;
+}
+
+.contact--form__text::-webkit-input-placeholder {
+    color: #667085;
+    font-size: 1.6rem;
+}
+
+label.checkbox--label {
+    display: inline;
+    line-height: 150%;
+    font-size: 1.6rem;
+    color: #475467;
+    font-weight: 400;
+    margin-left: 0.8em;
+}
+
+.contact--form__textarea {
+    height: 132px;
+    padding: 0.75em 0.9em;
+    line-height: 150%;
+    font-size: 1.6rem;
+}
+
+.contact--form__textarea::placeholder {
+    color: #667085;
+    font-size: 1.6rem;
+    line-height: 150%;
+}
+.contact--form__textarea:focus {
+    outline: none;
+    border: 1px solid #84CAFF;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #D1E9FF;
+}
+
+.contact--form__submit {
+    background-color: var(--submit--bgcolor);
+    border: 1px solid var(--submit--bgcolor);
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    padding: 0.75em 1.25em;
+    margin-top: 2em;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.contact--form__submit:disabled {
+    background-color: #B2DDFf;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+.contact--form__submit:focus {
+    outline: none;
+    background-color: #1570EF;
+    border: 1px solid #1570EF;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #D1E9FF;
+}
+
+.contact--form__submit:hover {
+    background: #175CD3;
+    border: 1px solid #175CD3;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+
+.textarea--label {
+    font-size: 1.4rem;
+}
+.checkbox--label{
+    color: #475467;
+}
+@media screen and (min-width: 720px){
+    .contact--page {
+        max-width: 720px;
+        margin: 3.2em auto 6em;
+    }
+    .name--flex{
+        display: flex;
+        gap: 1.5em;
+    }
+    .name--flex div{
+        width: 100%;
+
+    }
+}
+
 @media screen and (min-width: 992px) {
     .links {
         margin-top: 3.5em;
     }
+
     .profile {
         max-width: 700px;
         margin: 0 auto;
@@ -298,7 +456,8 @@ footer {
     .bg {
         display: flex;
     }
-    .links{
+
+    .links {
         margin-top: 3.5em;
     }
 
@@ -353,7 +512,7 @@ footer {
         top: 11.5px;
         left: 50.5px;
         border-radius: 8px;
-    
+
     }
 
 
