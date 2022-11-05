@@ -1,9 +1,12 @@
-import React from "react"
 import Footer from "./Footer"
 import { useForm } from "react-hook-form"
-import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser'
+import {Link} from 'react-router-dom'
+import React, { useRef } from 'react';
+
 
 export default function Contact() {
+    const form = useRef()
     const [formData, setFormData] = React.useState(
         {
             firstName: "",
@@ -15,6 +18,7 @@ export default function Contact() {
     const [error, updateError] = React.useState(false)
     const [styles, updateStyle] = React.useState("")
     const [tmessage, updatetmessge] = React.useState("")
+    const [submitted, setSubmitted] = React.useState("")
 
     function handleChange(event) {
         const { name, value, type, checked } = event.target
@@ -26,29 +30,30 @@ export default function Contact() {
         })
 
     }
-
+    const sendEmail = (e) => {
+        // e.preventDefault();
+    
+        emailjs.sendForm('service_w8dxu55', 'template_3kd2m1k', form.current, 'Guw6C31CD_T6V4MHV')
+          .then((result) => {
+              console.log(result.text);
+              setSubmitted("Thank you, We'll get back to you")
+          }, (error) => {
+              console.log(error.text);
+          });
+      };
+    
+    
     function handleSubmit(event) {
-        event.preventDefault()
         // submitToApi(formData)
+        event.preventDefault()
         if (formData.message === "") {
             console.log('error')
             updateError(prev => true)
             updateStyle('error')
             updatetmessge('Please enter a message')
-
         }
         else {
-            updateError(prev => false)
-            updateStyle('')
-            updatetmessge("")
-            emailjs.sendForm('service_w8dxu55', 'template_3kd2m1k', formData,
-                'Guw6C31CD_T6V4MHV')
-                .then((result) => {
-                    console.log(result.text);
-                }, (error) => {
-                    console.log(error.text);
-                });
-                window.location.reload();
+            sendEmail(event)       
         }
     }
     return (
@@ -56,7 +61,7 @@ export default function Contact() {
             <div className="contact--page">
                 <h1 className="contact--header">Contact Me</h1>
                 <p className="contact--leading">Hi there, contact me to ask me about anything you have in mind</p>
-                <form className="contact--form" onSubmit={handleSubmit}>
+                <form className="contact--form" onSubmit={handleSubmit} ref={form}>
                     <div className="name--flex">
                         <div>
                             <label htmlFor="first_name">First name</label>
@@ -83,10 +88,12 @@ export default function Contact() {
                         <input checked={formData.agreed} className={`contact--form__checkbox ${styles}`} type="checkbox" onChange={handleChange} id="agreed" name="agreed" />
                         <label className="checkbox--label" htmlFor="agreed">You agree to providing your data to Juicio who may contact you.</label>
                     </div>
+    
                     <button className="contact--form__submit">Send message</button>
+                    {submitted.length > 0 && <p class="when_submitted">{submitted}</p>}
                 </form>
             </div>
             <Footer />
         </div>
     )
-}
+    }
